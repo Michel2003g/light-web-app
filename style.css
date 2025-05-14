@@ -1,0 +1,67 @@
+html {
+    background-color: #0F0F0F;
+}
+
+* {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    margin: 8px 0px;
+}
+
+.page {
+    padding: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 114px;
+    grid-auto-rows: 114px;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 82px));
+    gap: 24px;
+
+    justify-items: center;
+    align-items: center;
+
+    margin: 12px 0px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.button-title {
+    text-align: center;
+    margin: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #CCCCCC;
+}
+
+a {
+    color: #0EC9E6;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+a:visited {
+    color: #0EC9E6;
+}
+
+.object-button-container {
+    width: fit-content;
+}
+
+.object-button {
+    background-color: #1C1C1C;
+    width: 82px;
+    border-radius: 8px;
+    border: #343434 solid 3px;
+    aspect-ratio:  1 / 1;
+
+    text-align: center;
+    vertical-align: middle;
+
+    font-size: 36px;
+}
