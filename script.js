@@ -12,9 +12,9 @@ function getLampButton (index) {
     const element = document.createElement('div');
 
     element.innerHTML = `<div class="object-button-container">
-                <button class="object-button">
+                <a href="./edit?lamp=${index}" class="object-button">
                     🔥
-                </button>
+                </a>
                 <p class="button-title">Lamp ${index+1}</p>
             </div>`;
 
