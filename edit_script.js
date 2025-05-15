@@ -92,7 +92,9 @@ if (lamp === -1) {
     let allThemes = "";
 
     apiData.lamps.forEach(lamp => {
-      allThemes = allThemes + lamp.theme + " "
+      if (allThemes.includes(lamp.theme) == false) {
+        allThemes = allThemes + lamp.theme + " "
+      };
     });
 
     if (allThemes === "") {
