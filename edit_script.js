@@ -86,7 +86,7 @@ const lampTheme = document.getElementById("current-theme");
 const lamp = Number(parameters["lamp"]);
 
 function setTheme (theme) {
-  fetch(`/set?type="theme"&value="${theme}"&lamp="${lamp}"`).then( data => {
+  fetch(`/set?type=theme&value=${theme}&lamp=${lamp}`).then( data => {
     console.log(data);
   });
 }
