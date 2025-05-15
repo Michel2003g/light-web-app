@@ -76,8 +76,8 @@ const lampTitle = document.getElementById("page-title");
 
 const lamp = parameters["lamp"];
 
-if (lamp === -1) {
+if (lamp === "-1") {
   lampTitle.textContent = "Editing All Lamps";
 } else {
-  lampTitle.textContent = "Editing Lamp :" + parameters["lamp"];
+  lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
 }
