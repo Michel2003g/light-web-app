@@ -1,28 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+function GetParameters() {
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  const search = location.search.split("?")[1]; /// get all text after ?
+  let result = {};
 
-    <link rel="stylesheet" href="https://Michel2003g.github.io/light-web-app/style.css">
-</head>
-<body>
-    <div class="page #home-page">
-        <p class="title">Lamp Themes</p>
-        <div class="grid" id="theme-container">
-            <!-- buttons for lamps -->
-        </div>
-        <p class="title">Global Settings</p>
-        <a href="">Edit All Lamps</a>
-    </div>
+  const items = search.split("&");
 
-    <script src="https://Michel2003g.github.io/light-web-app/edit_script.js"></script>
+  items.forEach(item => {
+    const data = item.split("=");
+    result[data[0]] = data[1];
+  });
 
-</body>
+  console.log(result);
 
-</html>
+  return result;
+}
+
+function getThemeButton (themeName) {
+
+    const container = document.getElementById("theme-container");
+
+    // new element
+    const element = document.createElement('div');
+
+    element.innerHTML = `<div class="object-button-container">
+                <button class="object-button">
+                    🔥
+                </button>
+                <p class="button-title">${themeName}</p>
+            </div>`;
+
+    const button = element.querySelector('.object-button-container');
+
+    container.appendChild(button);
+
+    return button;
+
+}
+
+const themeData = [
+  {
+    theme : "Static",
+    settings : [
+      "Color1"
+    ],
+  },
+  {
+    theme : "Fire",
+    settings : [
+      "Color2"
+    ],
+  },
+  {
+    theme : "Breathe",
+    settings : [
+      "Color1",
+      "Speed"
+    ],
+  },
+  {
+    theme : "Sparkle",
+    settings : [
+      "Color1",
+      "Amount"
+    ],
+  },
+];
+
+themeData.forEach(data => {
+  getThemeButton(data.theme);
+});
+
+const parameters = GetParameters();
+
+const lampTitle = document.getElementById("page-title");
+
+const lamp = parameters["lamp"];
+
+if (lamp === -1) {
+  lampTitle.textContent = "Editing All Lamps";
+} else {
+  lampTitle.textContent = "Editing Lamp :" + parameters["lamp"];
+}
