@@ -10,7 +10,7 @@ function GetParameters() {
     result[data[0]] = data[1];
   });
 
-  console.log(result);
+  history.replaceState(null, "", "/edit");
 
   return result;
 }
