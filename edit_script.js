@@ -79,7 +79,6 @@ themeData.forEach(data => {
 });
 
 const parameters = GetParameters();
-const apiData = await apiCall();
 
 const lampTitle = document.getElementById("page-title");
 const lampTheme = document.getElementById("current-theme");
@@ -91,8 +90,10 @@ if (lamp === -1) {
 
   let allThemes = "";
 
-  apiData.lamps.forEach(lamp => {
-    allThemes = allThemes + lamp.theme.toUpperCase() + " "
+  apiCall().then(apiData => {
+    apiData.lamps.forEach(lamp => {
+      allThemes = allThemes + lamp.theme.toUpperCase() + " "
+    });
   });
 
   lampTheme.textContent = allThemes
@@ -100,5 +101,10 @@ if (lamp === -1) {
 } else {
   console.log(apiData.lamps)
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
-  lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase()
+  
+  apiCall().then(apiData => {
+    apiData.lamps.forEach(lamp => {
+      lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase()
+    });
+  });
 }
