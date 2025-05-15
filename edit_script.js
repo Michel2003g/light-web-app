@@ -82,6 +82,7 @@ const parameters = GetParameters();
 
 const lampTitle = document.getElementById("page-title");
 const lampTheme = document.getElementById("current-theme");
+const enabledCheckbox = document.getElementById("enabled-checkbox");
 
 const lamp = Number(parameters["lamp"]);
 
@@ -110,12 +111,16 @@ if (lamp === -1) {
     }
 
     lampTheme.textContent = allThemes
+    enabledCheckbox.checked = false
   });
 
 } else {
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
   
   apiCall().then(apiData => {
-    lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase();
+    const thisLamp = apiData.lamps[lamp];
+    lampTheme.textContent = thisLamp.theme.toUpperCase();
+    enabledCheckbox.checked = (thisLamp.enabled == "1");
   });
+  
 }
