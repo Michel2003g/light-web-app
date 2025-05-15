@@ -1,6 +1,6 @@
 function GetParameters() {
 
-  const search = location.search.substring(1); /// remove the ?
+  const search = location.search.split("?")[2]; /// get all text after ?
   let result = {};
 
   const items = search.split("&");
