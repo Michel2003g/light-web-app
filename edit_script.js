@@ -88,9 +88,9 @@ const lamp = Number(parameters["lamp"]);
 if (lamp === -1) {
   lampTitle.textContent = "Editing All Lamps";
 
-  let allThemes = "";
-
   apiCall().then(apiData => {
+    let allThemes = "";
+
     apiData.lamps.forEach(lamp => {
       allThemes = allThemes + lamp.theme + " "
     });
@@ -98,9 +98,9 @@ if (lamp === -1) {
     if (allThemes === "") {
       allThemes = "NONE";
     }
-  });
 
-  lampTheme.textContent = allThemes
+    lampTheme.textContent = allThemes
+  });
 
 } else {
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
