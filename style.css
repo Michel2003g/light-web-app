@@ -65,3 +65,16 @@ a:visited {
 
     font-size: 36px;
 }
+
+.object-button::after {
+    content: "";
+    background-color: #00000000;
+    width: 82px;
+    border-radius: 8px;
+    border: none;
+    aspect-ratio:  1 / 1;
+}
+
+.object-button::after .active {
+    background-color: #0000007b;
+}
