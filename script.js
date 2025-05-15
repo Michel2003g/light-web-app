@@ -4,7 +4,7 @@ function getLampButton (index) {
 
     const container = document.getElementById("lamp-container");
 
-    if (lamps[i] !== null) {
+    if (lamps[i]) {
         return lamps[i];
     }
 
