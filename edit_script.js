@@ -31,7 +31,7 @@ function getThemeButton (themeName) {
     const element = document.createElement('div');
 
     element.innerHTML = `<div class="object-button-container">
-                <button class="object-button" onClick="setTheme(${themeName})">
+                <button class="object-button" onClick="setTheme("${themeName}")">
                     🔥
                 </button>
                 <p class="button-title">${themeName}</p>
