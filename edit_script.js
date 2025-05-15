@@ -1,13 +1,13 @@
 function GetParameters() {
 
-  const search = location.search.split("?")[2]; /// get all text after ?
+  const search = location.search.split("?")[1]; /// get all text after ?
   let result = {};
 
   const items = search.split("&");
 
   items.forEach(item => {
     const data = item.split("=");
-    result[data[1]] = data[2];
+    result[data[1]] = data[1];
   });
 
   console.log(result);
