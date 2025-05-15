@@ -43,9 +43,9 @@ fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
 
     const lamps = data["lamps"]
     console.log(lamps)
-    console.log(lamps.lenght)
+    console.log(lamps.length)
 
-    for (i = 0; i < lamps.lenght; i++) {
+    for (i = 0; i < lamps.length; i++) {
         const lampButton = getLampButton(i);
         const lampData = lamps[i];
 
