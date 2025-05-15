@@ -6,7 +6,6 @@ html {
     color: white;
     font-family: "Poppins", sans-serif;
     font-style: normal;
-    margin: 8px 0px;
 }
 
 .page {
@@ -51,6 +50,7 @@ a:visited {
 
 .object-button-container {
     width: fit-content;
+    position: relative;
 }
 
 .object-button {
