@@ -68,13 +68,17 @@ a:visited {
 
 .object-button::after {
     content: "";
-    background-color: #00000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0000007b;
     width: 82px;
     border-radius: 8px;
     border: none;
     aspect-ratio:  1 / 1;
+    z-index: 10;
 }
 
 .object-button::after .active {
-    background-color: #0000007b;
+    background-color: #00000000;
 }
