@@ -7,7 +7,7 @@ function GetParameters() {
 
   items.forEach(item => {
     const data = item.split("=");
-    result[data[1]] = data[1];
+    result[data[0]] = data[1];
   });
 
   console.log(result);
