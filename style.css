@@ -67,6 +67,8 @@ html {
     justify-content: center;
 
     font-size: 36px;
+
+    text-decoration: none;
 }
 
 .object-button::after {
