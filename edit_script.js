@@ -10,9 +10,14 @@ function GetParameters() {
     result[data[0]] = data[1];
   });
 
-  history.replaceState(null, "", "/edit");
-
   return result;
+}
+
+async function apiCall() {
+  const response = await fetch("/api"); // of een volledige URL
+  const data = await response.json(); // als het JSON is
+
+  return data;
 }
 
 function getThemeButton (themeName) {
@@ -71,13 +76,25 @@ themeData.forEach(data => {
 });
 
 const parameters = GetParameters();
+const apiData = apiCall();
 
 const lampTitle = document.getElementById("page-title");
+const lampTheme = document.getElementById("current-theme");
 
-const lamp = parameters["lamp"];
+const lamp = Number(parameters["lamp"]);
 
-if (lamp === "-1") {
+if (lamp === -1) {
   lampTitle.textContent = "Editing All Lamps";
+
+  let allThemes = "";
+
+  apiData.lamps.forEach(lamp => {
+    allThemes = allThemes + lamp.theme.toUpperCase() + " "
+  });
+
+  lampTheme.textContent = allThemes
+
 } else {
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
+  lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase()
 }
