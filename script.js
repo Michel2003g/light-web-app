@@ -41,7 +41,9 @@ fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
     // hier kun je iets doen met je data, bijvoorbeeld:
     // update je UI of verwerk de LED-waarden
 
-    const lamps = data.lamps
+    const lamps = data["lamps"]
+    console.log(lamps)
+    console.log(lamps.lenght)
 
     for (i = 0; i < lamps.lenght; i++) {
         const lampButton = getLampButton(i);
