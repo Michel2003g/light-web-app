@@ -38,10 +38,10 @@ fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
     const lamps = data["lamps"]
 
     for (i = 0; i < lamps.length; i++) {
-        const lampButton = getLampButton(i);
+        const lampButtonContainer = getLampButton(i);
         const lampData = lamps[i];
 
-        console.log(lampData);
+        const lampButton = lampButtonContainer.querySelector('.object-button');
 
         if (lampData.enabled == "1") {
             lampButton.classList.add("active");
