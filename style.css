@@ -87,3 +87,15 @@ html {
 .object-button::after .active {
     background-color: #00000000;
 }
+
+.data-label {
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.data-label > span {
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+}
