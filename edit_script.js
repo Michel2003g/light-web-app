@@ -45,12 +45,6 @@ function getThemeButton (themeName) {
 
 }
 
-function setTheme (theme) {
-  fetch(`/set?type="theme"&value="${theme}"`).then( data => {
-    console.log(data);
-  });
-}
-
 const themeData = [
   {
     theme : "Static",
@@ -90,6 +84,12 @@ const lampTitle = document.getElementById("page-title");
 const lampTheme = document.getElementById("current-theme");
 
 const lamp = Number(parameters["lamp"]);
+
+function setTheme (theme) {
+  fetch(`/set?type="theme"&value="${theme}"&lamp="${lamp}"`).then( data => {
+    console.log(data);
+  });
+}
 
 if (lamp === -1) {
   lampTitle.textContent = "Editing All Lamps";
