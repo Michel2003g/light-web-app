@@ -84,7 +84,7 @@ html {
     z-index: 10;
 }
 
-.object-button::after .active {
+.object-button.active::after {
     background-color: #00000000;
 }
 
