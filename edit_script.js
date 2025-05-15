@@ -86,9 +86,11 @@ const lampTheme = document.getElementById("current-theme");
 const lamp = Number(parameters["lamp"]);
 
 function setTheme (theme) {
-  fetch(`/set?type=theme&value=${theme}&lamp=${lamp}`).then( data => {
-    console.log(data);
-  });
+  fetch(`/set?type=theme&value=${theme}&lamp=${lamp}`)
+  .then(response => response.text()) // of .json() als je JSON terugstuurt
+    .then(data => {
+      console.log(data);
+    });
 }
 
 if (lamp === -1) {
