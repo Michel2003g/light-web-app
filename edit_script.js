@@ -92,7 +92,7 @@ if (lamp === -1) {
 
   apiCall().then(apiData => {
     apiData.lamps.forEach(lamp => {
-      allThemes = allThemes + lamp.theme.toUpperCase() + " "
+      allThemes = allThemes + lamp.theme + " "
     });
 
     if (allThemes === "") {
@@ -106,8 +106,6 @@ if (lamp === -1) {
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
   
   apiCall().then(apiData => {
-    apiData.lamps.forEach(lamp => {
-      lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase()
-    });
+    lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase();
   });
 }
