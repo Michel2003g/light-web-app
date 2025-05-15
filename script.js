@@ -18,9 +18,12 @@ function getLampButton (index) {
                 <p class="button-title">Lamp ${index+1}</p>
             </div>`;
 
-    container.appendChild(element);
+    const button = element.querySelector('.object-button-container');
 
-    lamps[i] = element;
+    container.appendChild(button);
+
+    lamps[i] = button;
+    return button;
 
 }
 
