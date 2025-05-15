@@ -1,3 +1,20 @@
+function GetParameters() {
+
+  const search = location.search.substring(1); /// remove the ?
+  let result = {};
+
+  const items = search.split("&");
+
+  items.forEach(item => {
+    const data = item.split("=");
+    result[data[1]] = data[2];
+  });
+
+  console.log(result);
+
+  return result;
+}
+
 function getThemeButton (themeName) {
 
     const container = document.getElementById("theme-container");
@@ -52,3 +69,5 @@ const themeData = [
 themeData.forEach(data => {
   getThemeButton(data.theme);
 });
+
+GetParameters();
