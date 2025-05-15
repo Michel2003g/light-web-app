@@ -17,6 +17,9 @@ async function apiCall() {
   const response = await fetch("/api"); // of een volledige URL
   const data = await response.json(); // als het JSON is
 
+  console.log(response)
+  console.log(data)
+
   return data;
 }
 
@@ -76,7 +79,7 @@ themeData.forEach(data => {
 });
 
 const parameters = GetParameters();
-const apiData = apiCall();
+const apiData = await apiCall();
 
 const lampTitle = document.getElementById("page-title");
 const lampTheme = document.getElementById("current-theme");
@@ -95,6 +98,7 @@ if (lamp === -1) {
   lampTheme.textContent = allThemes
 
 } else {
+  console.log(apiData.lamps)
   lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
   lampTheme.textContent = apiData.lamps[lamp].theme.toUpperCase()
 }
