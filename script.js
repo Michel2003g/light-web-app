@@ -27,11 +27,6 @@ function getLampButton (index) {
 
 }
 
-// for (let i = 0; i < 10; i++) {
-//     console.log(i);
-//     getLampButton(i);
-// }
-
 fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
   .then(response => {
     if (!response.ok) {
@@ -54,7 +49,7 @@ fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
 
         console.log(lampData);
 
-        if (lampData.enabled) {
+        if (lampData.enabled == "1") {
             lampButton.classList.add("active");
         } else {
             lampButton.classList.remove("active");
