@@ -94,6 +94,14 @@ function setTheme (theme) {
     });
 }
 
+function setEnabled (checkbox) {
+  fetch(`/set?type=enabled&value=${checkbox.checked}&lamp=${lamp}`)
+  .then(response => response.text()) // of .json() als je JSON terugstuurt
+    .then(data => {
+      console.log(data);
+    });
+}
+
 if (lamp === -1) {
   lampTitle.textContent = "Editing All Lamps";
 
@@ -115,12 +123,12 @@ if (lamp === -1) {
   });
 
 } else {
-  lampTitle.textContent = "Editing Lamp : " + parameters["lamp"];
+  lampTitle.textContent = "Editing Lamp : " + `${(lamp + 1)}`;
   
   apiCall().then(apiData => {
     const thisLamp = apiData.lamps[lamp];
     lampTheme.textContent = thisLamp.theme.toUpperCase();
     enabledCheckbox.checked = (thisLamp.enabled == "1");
   });
-  
+
 }
