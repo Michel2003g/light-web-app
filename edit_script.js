@@ -137,3 +137,10 @@ if (lamp === -1) {
   });
 
 }
+
+//// loaded in from color picker script.
+
+colorPickerBody.addEventListener("colorChange", (e) => {
+    const rgb = e.detail.rgb;
+    fetch(`http://192.168.178.33/setColor?lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+})
