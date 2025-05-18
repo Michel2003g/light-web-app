@@ -111,6 +111,12 @@
 
         width: 100vw;
         height: 100vh;
+
+        transition: all .25s;
+    }
+
+    #color-picker-container.show {
+        background-color: rgba(0, 0, 0, 0.75);
     }
 
 
@@ -123,7 +129,7 @@
         border-radius: 8px;
         padding: 20px;
 
-        width: 10%;
+        width: 16%;
         justify-content: center;
 
         background-color: #0F0F0F;
@@ -132,12 +138,14 @@
 
         visibility: hidden;
 
-        transition: width .25s;
+        transform: scale(.8);
+
+        transition: all .25s;
     }
 
-    #color-picker-body.show {
+    #color-picker-container.show #color-picker-body {
         visibility: visible;
-        width: 16%;
+        transform: scale(1);
     }
 
     #color-picker-body button {
