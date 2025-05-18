@@ -113,10 +113,13 @@
         height: 100vh;
 
         transition: all .25s;
+
+        pointer-events: none;
     }
 
     #color-picker-container.show {
         background-color: rgba(0, 0, 0, 0.75);
+        pointer-events: auto;
     }
 
 
