@@ -90,18 +90,17 @@ function setTheme (theme) {
   fetch(`/set?type=theme&value=${theme}&lamp=${lamp}`)
   .then(response => response.text()) // of .json() als je JSON terugstuurt
     .then(data => {
-      console.log(data);
-      location.reload();
+      if (lamp != -1) {
+        lampTheme.textContent = `${theme.toUpperCase()}`
+      }
     });
 }
 
 function setEnabled (checkbox) {
   fetch(`/set?type=enabled&value=${checkbox.checked}&lamp=${lamp}`)
   .then(response => response.text()) // of .json() als je JSON terugstuurt
-    .then(data => {
-      console.log(data);
-      location.reload();
-    });
+    // .then(data => {
+    // });
 }
 
 enabledCheckbox.addEventListener("change", (event) => {
