@@ -2,7 +2,7 @@
 
     const element = document.createElement("div");
     element.innerHTML = `
-    <div id="color-picker-container" class="show">
+    <div id="color-picker-container" class="">
         <div id="color-picker-body">
             <div id="colorPreview"></div>
             <div class="slider-container">
