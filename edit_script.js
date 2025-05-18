@@ -17,9 +17,6 @@ async function apiCall() {
   const response = await fetch("/api"); // of een volledige URL
   const data = await response.json(); // als het JSON is
 
-  console.log(response)
-  console.log(data)
-
   return data;
 }
 
@@ -35,6 +32,28 @@ function getThemeButton (themeName) {
                     🔥
                 </button>
                 <p class="button-title">${themeName}</p>
+            </div>`;
+
+    const button = element.querySelector('.object-button-container');
+
+    container.appendChild(button);
+
+    return button;
+
+}
+
+function getSettingButton (settingName) {
+
+    const container = document.getElementById("settings-container");
+
+    // new element
+    const element = document.createElement('div');
+
+    element.innerHTML = `<div class="object-button-container">
+                <button class="object-button" onClick="OpenSetting('${settingName}')">
+                    🔥
+                </button>
+                <p class="button-title">${settingName}</p>
             </div>`;
 
     const button = element.querySelector('.object-button-container');
@@ -74,6 +93,10 @@ const themeData = [
   },
 ];
 
+getSettingButton("Color1");
+getSettingButton("Color2");
+getSettingButton("Amount");
+
 themeData.forEach(data => {
   getThemeButton(data.theme);
 });
@@ -94,6 +117,18 @@ function setTheme (theme) {
         lampTheme.textContent = `${theme.toUpperCase()}`
       }
     });
+}
+
+let currentColorSlot = 0;
+
+function OpenSetting (settingName) {
+  console.log(settingName);
+
+  if (settingName == "Color1") {
+    currentColorSlot = 0;
+    colorPickerContainer.classList.add("show");
+  }
+
 }
 
 function setEnabled (checkbox) {
@@ -142,5 +177,5 @@ if (lamp === -1) {
 
 colorPickerBody.addEventListener("colorChange", (e) => {
     const rgb = e.detail.rgb;
-    fetch(`http://192.168.178.33/setColor?lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+    fetch(`http://192.168.178.33/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
 })
