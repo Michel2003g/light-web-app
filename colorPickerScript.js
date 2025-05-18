@@ -2,8 +2,8 @@
 
     const element = document.createElement("div");
     element.innerHTML = `
-    <div id="color-picker-container">
-        <div id="color-picker-body" class="show">
+    <div id="color-picker-container" class="show">
+        <div id="color-picker-body">
             <div id="colorPreview"></div>
             <div class="slider-container">
                 <input type="range" id="hueSlider" min="0" max="360" value="0">
@@ -17,6 +17,7 @@
     /// add color picker to the body;
     document.body.appendChild(element);
 
+    const colorPickerContainer = document.getElementById('color-picker-container');
     const colorPickerBody = document.getElementById('color-picker-body');
     const colorPickerCloseButton = document.getElementById('close-color-picker');
 
@@ -98,5 +99,5 @@
     updateColor();
 
     colorPickerCloseButton.addEventListener("click", event => {
-        colorPickerBody.classList.remove("show");
+        colorPickerContainer.classList.remove("show");
     });
