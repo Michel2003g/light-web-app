@@ -66,7 +66,16 @@
       const saturation = saturationSlider.value;
 
       const rgb = hslToRgb(hue, saturation, brightness);
-      fetch(`/setColor?lamp=6&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+    //   fetch(`/setColor?lamp=6&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+
+      const event = new CustomEvent('colorChange', {
+            detail: {
+            rgb: rgb,
+            }
+        });
+
+        // Dispatch the event
+        colorPickerBody.dispatchEvent(event);
     }
 
     const throttleSend = throttle(sendColor, 250);
