@@ -1,4 +1,23 @@
-const colorPickerBody = document.getElementById('color-picker-body');
+/// create the color picker;
+
+    const element = document.createElement("div");
+    element.innerHTML = `
+    <div id="color-picker-container">
+        <div id="color-picker-body" class="show">
+            <div id="colorPreview"></div>
+            <div class="slider-container">
+                <input type="range" id="hueSlider" min="0" max="360" value="0">
+                <input type="range" id="saturationSlider" min="0" max="100" value="100">
+                <input type="range" id="brightnessSlider" min="0" max="100" value="50">
+            </div>
+            <button id="close-color-picker">Close</button>
+        </div>
+    </div>
+    `
+    /// add color picker to the body;
+    document.body.appendChild(element);
+
+    const colorPickerBody = document.getElementById('color-picker-body');
     const colorPickerCloseButton = document.getElementById('close-color-picker');
 
     const hueSlider = document.getElementById('hueSlider');
