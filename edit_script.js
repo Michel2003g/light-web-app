@@ -95,7 +95,7 @@ const themeData = [
 
 getSettingButton("Color1");
 getSettingButton("Color2");
-getSettingButton("Amount");
+getSettingButton("Speed");
 
 themeData.forEach(data => {
   getThemeButton(data.theme);
@@ -125,6 +125,12 @@ function OpenSetting (settingName) {
   console.log(settingName);
 
   if (settingName == "Color1") {
+    currentColorSlot = 0;
+    colorPickerContainer.classList.add("show");
+  } else if (settingName == "Color2") {
+    currentColorSlot = 1;
+    colorPickerContainer.classList.add("show")
+  } else if (settingName == "Speed") {
     currentColorSlot = 0;
     colorPickerContainer.classList.add("show");
   }
