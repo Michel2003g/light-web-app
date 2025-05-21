@@ -106,10 +106,10 @@ async function updatePage(data) {
     settingButton.classList.remove("active");
   });
 
+  const settings = themeData[currentTheme].settings;
   activeButtons = settings; /// register the buttons as active;
 
   /// activate all active settings;
-  const settings = themeData[currentTheme].settings;
   settings.forEach(settingName => {
     const settingButton = settingButtons[settingName].querySelector('.object-button');
     settingButton.classList.add("active");
