@@ -92,7 +92,7 @@ function getSettingButton (settingName) {
 
 }
 
-const activeButtons = [];
+let activeButtons = [];
 
 async function updatePage(data) {
 
@@ -106,12 +106,13 @@ async function updatePage(data) {
     settingButton.classList.remove("active");
   });
 
+  activeButtons = settings; /// register the buttons as active;
+
   /// activate all active settings;
   const settings = themeData[currentTheme].settings;
   settings.forEach(settingName => {
     const settingButton = settingButtons[settingName].querySelector('.object-button');
     settingButton.classList.add("active");
-    activeButtons[settingName] = settingButtons[settingName]; /// register the button as active;
   });
   
 }
