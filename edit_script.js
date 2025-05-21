@@ -20,6 +20,10 @@ async function apiCall() {
   return data;
 }
 
+async function updatePage(data) {
+  console.log(data);
+}
+
 function getThemeButton (themeName) {
 
     const container = document.getElementById("theme-container");
@@ -192,3 +196,8 @@ colorPickerBody.addEventListener("colorChange", (e) => {
     const rgb = e.detail.rgb;
     fetch(`http://192.168.178.33/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
 })
+
+/// keeps the page up to date every 5 sec on data found on the esp.
+setInterval( () => {
+  apiCall().then(updatePage);
+}, 5000);
