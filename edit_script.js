@@ -96,6 +96,10 @@ const activeButtons = [];
 
 async function updatePage(data) {
 
+  const thisLamp = data[lamp];
+
+  currentTheme = thisLamp.theme;
+
   /// deactivate all buttons;
   activeButtons.forEach(settingName => {
     const settingButton = settingButtons[settingName].querySelector('.object-button');
