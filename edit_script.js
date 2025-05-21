@@ -18,13 +18,13 @@ const themeData = {
     settings: ["Color1"],
   },
   Fire: {
-    settings: ["Color2"],
+    settings: ["Color1", "Color2"],
   },
   Breathe: {
     settings: ["Color1", "Speed"],
   },
   Sparkle: {
-    settings: ["Color1", "Amount"],
+    settings: ["Color1"],
   },
   Rainbow: {
     settings: ["Color1", "Speed"],
