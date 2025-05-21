@@ -95,19 +95,19 @@ function getSettingButton (settingName) {
 const activeButtons = [];
 
 async function updatePage(data) {
-  console.log(data);
 
-  /// deactivate all buttons
+  /// deactivate all buttons;
   activeButtons.forEach(settingName => {
     const settingButton = settingButtons[settingName].querySelector('.object-button');
     settingButton.classList.remove("active");
   });
 
-  /// activate all active settings
+  /// activate all active settings;
   const settings = themeData[currentTheme].settings;
   settings.forEach(settingName => {
     const settingButton = settingButtons[settingName].querySelector('.object-button');
     settingButton.classList.add("active");
+    activeButtons[settingName] = settingButtons[settingName]; /// register the button as active;
   });
   
 }
@@ -195,6 +195,7 @@ if (lamp === -1) {
     const thisLamp = apiData.lamps[lamp];
     lampTheme.textContent = thisLamp.theme.toUpperCase();
     enabledCheckbox.checked = (thisLamp.enabled == "1");
+    updatePage(apiData);
   });
 
 }
