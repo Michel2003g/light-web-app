@@ -91,6 +91,13 @@ const themeData = [
       "Amount"
     ],
   },
+  {
+    theme : "Rainbow",
+    settings : [
+      "Color1",
+      "Speed"
+    ],
+  },
 ];
 
 getSettingButton("Color1");
