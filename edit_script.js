@@ -96,7 +96,7 @@ const activeButtons = [];
 
 async function updatePage(data) {
 
-  const thisLamp = data[lamp];
+  const thisLamp = data["lamps"][lamp];
 
   currentTheme = thisLamp.theme;
 
