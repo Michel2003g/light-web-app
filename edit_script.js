@@ -13,41 +13,23 @@ function GetParameters() {
   return result;
 }
 
-const themeData = [
-  {
-    theme : "Static",
-    settings : [
-      "Color1"
-    ],
+const themeData = {
+  Static: {
+    settings: ["Color1"],
   },
-  {
-    theme : "Fire",
-    settings : [
-      "Color2"
-    ],
+  Fire: {
+    settings: ["Color2"],
   },
-  {
-    theme : "Breathe",
-    settings : [
-      "Color1",
-      "Speed"
-    ],
+  Breathe: {
+    settings: ["Color1", "Speed"],
   },
-  {
-    theme : "Sparkle",
-    settings : [
-      "Color1",
-      "Amount"
-    ],
+  Sparkle: {
+    settings: ["Color1", "Amount"],
   },
-  {
-    theme : "Rainbow",
-    settings : [
-      "Color1",
-      "Speed"
-    ],
+  Rainbow: {
+    settings: ["Color1", "Speed"],
   },
-];
+};
 
 let currentTheme = "Static";
 
@@ -134,9 +116,9 @@ getSettingButton("Color1");
 getSettingButton("Color2");
 getSettingButton("Speed");
 
-themeData.forEach(data => {
-  getThemeButton(data.theme);
-});
+for (const key in themeData) {
+  getThemeButton(key);
+}
 
 const parameters = GetParameters();
 
