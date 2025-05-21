@@ -99,3 +99,13 @@ html {
     font-weight: 700;
     font-size: 12px;
 }
+
+button {
+    font-weight: bold;
+    margin-top: 12px;
+    padding: 6px 12px;
+    color: white;
+    background-color: #1C1C1C;
+    border-radius: 8px;
+    border: #343434 solid 3px;
+}
