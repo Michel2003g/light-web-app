@@ -51,3 +51,28 @@ fetch('./api')  // vervang door het echte IP en endpoint van je ESP32
     };
 
   });
+
+/// keeps the page up to date every 5 sec on data found on the esp.
+setInterval( () => {
+  fetch('./api')  // get api data;
+  .then(response => {
+    return response.json();  // parse JSON;
+  })
+  .then(data => {
+    const lamps = data["lamps"];
+
+    for (i = 0; i < lamps.length; i++) {
+        const lampButtonContainer = getLampButton(i);
+        const lampData = lamps[i];
+
+        const lampButton = lampButtonContainer.querySelector('.object-button');
+
+        if (lampData.enabled == true) {
+            lampButton.classList.add("active");
+        } else {
+            lampButton.classList.remove("active");
+        };
+    };
+
+  });
+}, 5000);
