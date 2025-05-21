@@ -13,61 +13,6 @@ function GetParameters() {
   return result;
 }
 
-async function apiCall() {
-  const response = await fetch("/api"); // of een volledige URL
-  const data = await response.json(); // als het JSON is
-
-  return data;
-}
-
-async function updatePage(data) {
-  console.log(data);
-}
-
-function getThemeButton (themeName) {
-
-    const container = document.getElementById("theme-container");
-
-    // new element
-    const element = document.createElement('div');
-
-    element.innerHTML = `<div class="object-button-container">
-                <button class="object-button" onClick="setTheme('${themeName}')">
-                    🔥
-                </button>
-                <p class="button-title">${themeName}</p>
-            </div>`;
-
-    const button = element.querySelector('.object-button-container');
-
-    container.appendChild(button);
-
-    return button;
-
-}
-
-function getSettingButton (settingName) {
-
-    const container = document.getElementById("settings-container");
-
-    // new element
-    const element = document.createElement('div');
-
-    element.innerHTML = `<div class="object-button-container">
-                <button class="object-button" onClick="OpenSetting('${settingName}')">
-                    🔥
-                </button>
-                <p class="button-title">${settingName}</p>
-            </div>`;
-
-    const button = element.querySelector('.object-button-container');
-
-    container.appendChild(button);
-
-    return button;
-
-}
-
 const themeData = [
   {
     theme : "Static",
@@ -104,6 +49,87 @@ const themeData = [
   },
 ];
 
+let currentTheme = "Static";
+
+async function apiCall() {
+  const response = await fetch("/api"); // of een volledige URL
+  const data = await response.json(); // als het JSON is
+
+  return data;
+}
+
+function getThemeButton (themeName) {
+
+    const container = document.getElementById("theme-container");
+
+    // new element
+    const element = document.createElement('div');
+
+    element.innerHTML = `<div class="object-button-container">
+                <button class="object-button" onClick="setTheme('${themeName}')">
+                    🔥
+                </button>
+                <p class="button-title">${themeName}</p>
+            </div>`;
+
+    const button = element.querySelector('.object-button-container');
+
+    container.appendChild(button);
+
+    return button;
+
+}
+
+const settingButtons = [];
+
+function getSettingButton (settingName) {
+
+    if (settingButtons[settingName]) {
+      return settingButtons[settingName];
+    }
+
+    const container = document.getElementById("settings-container");
+
+    // new element
+    const element = document.createElement('div');
+
+    element.innerHTML = `<div class="object-button-container">
+                <button class="object-button" onClick="OpenSetting('${settingName}')">
+                    🔥
+                </button>
+                <p class="button-title">${settingName}</p>
+            </div>`;
+
+    const button = element.querySelector('.object-button-container');
+
+    container.appendChild(button);
+
+    settingButtons[settingName] = button;
+
+    return button;
+
+}
+
+const activeButtons = [];
+
+async function updatePage(data) {
+  console.log(data);
+
+  /// deactivate all buttons
+  activeButtons.forEach(settingName => {
+    const settingButton = settingButtons[settingName].querySelector('.object-button');
+    settingButton.classList.remove("active");
+  });
+
+  /// activate all active settings
+  const settings = themeData[currentTheme].settings;
+  settings.forEach(settingName => {
+    const settingButton = settingButtons[settingName].querySelector('.object-button');
+    settingButton.classList.add("active");
+  });
+  
+}
+
 getSettingButton("Color1");
 getSettingButton("Color2");
 getSettingButton("Speed");
@@ -128,6 +154,7 @@ function setTheme (theme) {
         lampTheme.textContent = `${theme.toUpperCase()}`
       }
     });
+    currentTheme = theme;
 }
 
 let currentColorSlot = 0;
