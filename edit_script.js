@@ -134,7 +134,7 @@ const enabledCheckbox = document.getElementById("enabled-checkbox");
 const lamp = Number(parameters["lamp"]);
 
 function setTheme (theme) {
-  fetch(`/set?type=theme&value=${theme}&lamp=${lamp}`)
+  fetch(`${location.origin.replace(location.port, '3031')}/set?type=theme&value=${theme}&lamp=${lamp}`)
   .then(response => response.text()) // of .json() als je JSON terugstuurt
     .then(data => {
       if (lamp != -1) {
@@ -163,7 +163,7 @@ function OpenSetting (settingName) {
 }
 
 function setEnabled (checkbox) {
-  fetch(`/set?type=enabled&value=${checkbox.checked}&lamp=${lamp}`)
+  fetch(`${location.origin.replace(location.port, '3031')}/set?type=enabled&value=${checkbox.checked}&lamp=${lamp}`)
   .then(response => response.text()) // of .json() als je JSON terugstuurt
     // .then(data => {
     // });
@@ -209,7 +209,7 @@ if (lamp === -1) {
 
 colorPickerBody.addEventListener("colorChange", (e) => {
     const rgb = e.detail.rgb;
-    fetch(`http://192.168.178.33/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+    fetch(``${location.origin.replace(location.port, '3031')}/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
 })
 
 /// keeps the page up to date every 5 sec on data found on the esp.
