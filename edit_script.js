@@ -209,7 +209,7 @@ if (lamp === -1) {
 
 colorPickerBody.addEventListener("colorChange", (e) => {
     const rgb = e.detail.rgb;
-    fetch(``${location.origin.replace(location.port, '3031')}/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
+    fetch(`${location.origin.replace(location.port, '3031')}/setColor?slot=${currentColorSlot}&lamp=${lamp}&r=${rgb.r}&g=${rgb.g}&b=${rgb.b}`)
 })
 
 /// keeps the page up to date every 5 sec on data found on the esp.
